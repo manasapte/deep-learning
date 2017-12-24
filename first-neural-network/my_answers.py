@@ -81,15 +81,12 @@ class NeuralNetwork(object):
         
         # TODO: Backpropagated error terms - Replace these values with your calculations.
         output_error_term = error
-        #print("op error term: ", output_error_term)
         
-        #print("hiddenoutputs: ", hidden_outputs, " and hidden_error: ", hidden_error)
         hidden_error_term = hidden_error.T * hidden_outputs * (1 - hidden_outputs)
         
         # Weight step (input to hidden)
         delta_weights_i_h += np.dot(X[:, None], hidden_error_term)
         # Weight step (hidden to output)
-        #print("delta ho: ", delta_weights_h_o, " hidden ops: ", hidden_outputs, " op err term: ", output_error_term)
         delta_weights_h_o += np.dot(hidden_outputs[:, None], output_error_term[None, :])
         return delta_weights_i_h, delta_weights_h_o
 
